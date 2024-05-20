@@ -34,9 +34,11 @@ next_btn.addEventListener('click', (e)=>{
 });
 document.addEventListener('DOMContentLoaded', () => {
     fetchFakeShopAPI();
+    setupCategoryDropdown();
+
 });
 
-function fetchFakeShopAPI() {
+function fetchFakeShopAPI(category = 'All') {
     const loadingIndicator = document.getElementById('loading');
 
     fetch('https://fakestoreapi.com/products')
