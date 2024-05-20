@@ -1,50 +1,41 @@
-const imgs = document.querySelectorAll('.header-slider ul img');
-const prev_btn= document.querySelector('.control_prev');
-const next_btn= document.querySelector('.control_next');
-
-let n = 0;
-
-function changeSlide(){
-    for (let i = 0; i < imgs.length; i++) {
-        imgs[i].style.display = 'none';
-    }
-    imgs[n].style.display = 'block';
-}
-
-changeSlide();
-
-prev_btn.addEventListener('click', (e)=>{
-    if(n > 0){
-        n--;
-    }else{
-        n = imgs.length - 1;
-    }
-    changeSlide();
-    
-});
-
-next_btn.addEventListener('click', (e)=>{
-    if(n < imgs.length - 1 ){
-        n++;
-    }else{
-        n = 0;
-    }
-    changeSlide();
-    
-});
 document.addEventListener('DOMContentLoaded', () => {
+    setupSlider();
     fetchFakeShopAPI();
     setupCategoryDropdown();
-    setupSlider();
-    
-    
+    setupLanguageDropdown();
+    setupNavigationDrawer();
 });
+
+function setupSlider() {
+    const imgs = document.querySelectorAll('.header-slider ul img');
+    const prev_btn = document.querySelector('.control_prev');
+    const next_btn = document.querySelector('.control_next');
+
+    let n = 0;
+
+    function changeSlide() {
+        imgs.forEach((img, i) => {
+            img.style.display = i === n ? 'block' : 'none';
+        });
+    }
+
+    changeSlide();
+
+    prev_btn.addEventListener('click', () => {
+        n = (n > 0) ? n - 1 : imgs.length - 1;
+        changeSlide();
+    });
+
+    next_btn.addEventListener('click', () => {
+        n = (n < imgs.length - 1) ? n + 1 : 0;
+        changeSlide();
+    });
+}
 
 function fetchFakeShopAPI(category = 'All') {
     const loadingIndicator = document.getElementById('loading');
     loadingIndicator.style.display = 'block';
 
-    // Update the URL based on the category
     const url = category === 'All' ? 'https://fakestoreapi.com/products' : `https://fakestoreapi.com/products/category/${category.toLowerCase()}`;
 
     fetch(url)
@@ -66,7 +57,7 @@ function displayProducts(products) {
     products.forEach(product => {
         const productElement = document.createElement('div');
         productElement.className = 'product';
-        
+
         productElement.innerHTML = `
             <img src="${product.image}" alt="${product.title}">
             <h2>${product.title}</h2>
@@ -91,35 +82,34 @@ function setupCategoryDropdown() {
         item.addEventListener('click', (e) => {
             const selectedCategory = e.target.getAttribute('data-category');
             categoryLabel.textContent = selectedCategory;
-            categoryDropdown
             categoryDropdown.classList.add('hidden');
             fetchFakeShopAPI(selectedCategory);
         });
     });
 
-    // Close dropdown when clicked outside
     document.addEventListener('click', (e) => {
         if (!document.getElementById('category-menu').contains(e.target)) {
             categoryDropdown.classList.add('hidden');
         }
     });
 }
-document.addEventListener('DOMContentLoaded', function() {
+
+function setupLanguageDropdown() {
     const navLanguage = document.querySelector('.nav-language');
     const languageDropdown = document.querySelector('.language-dropdown');
 
-    navlanguage.addEventListener('click', function() {
+    navLanguage.addEventListener('click', () => {
         languageDropdown.classList.toggle('hidden');
     });
 
-    document.addEventListener('click', function(event) {
-        if (!navlanguage.contains(event.target)) {
+    document.addEventListener('click', (e) => {
+        if (!navLanguage.contains(e.target)) {
             languageDropdown.classList.add('hidden');
         }
     });
-});
+}
 
-document.addEventListener('DOMContentLoaded', () => {
+function setupNavigationDrawer() {
     const allBtn = document.getElementById('allBtn');
     const navigationDrawer = document.getElementById('navigationDrawer');
     const closeBtn = document.getElementById('closeBtn');
@@ -137,5 +127,4 @@ document.addEventListener('DOMContentLoaded', () => {
             navigationDrawer.classList.remove('show');
         }
     });
-    });
-
+}
