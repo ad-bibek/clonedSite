@@ -13,17 +13,48 @@
         <div class="nav-country">
             <img src="./assets/location_icon.png" height="20" alt="">
             <div>
+                <a href="/">
                 <p> Deliver to </p>
-                <h1> Nepal</h1>
+                <h1> Nepal</h1> </a>
             </div>
         </div>
         <div class="nav-search">
-            <div class="nav-search-category">
-                <p> All</p>
+            <div class="nav-search-category" id="category-menu">
+                <p>All</p>
                 <img src="./assets/dropdown_icon.png" height="12" alt="">
+                <div id="category-dropdown" class="category-dropdown hidden">
+                    <p class="category-item" data-category="All">All</p>
+                    <p class="category-item" data-category="Arts & Crafts">Arts & Crafts</p>
+                    <p class="category-item" data-category="Automotive">Automotive</p>
+                    <p class="category-item" data-category="Baby">Baby</p>
+                    <p class="category-item" data-category="Beauty & Personal Care">Beauty & Personal Care</p>
+                    <p class="category-item" data-category="Books">Books</p>
+                    <p class="category-item" data-category="Boys' Fashion">Boys' Fashion</p>
+                    <p class="category-item" data-category="Computers">Computers</p>
+                    <p class="category-item" data-category="Deals">Deals</p>
+                    <p class="category-item" data-category="Digital Music">Digital Music</p>
+                    <p class="category-item" data-category="Electronics">Electronics</p>
+                    <p class="category-item" data-category="Girls' Fashion">Girls' Fashion</p>
+                    <p class="category-item" data-category="Health & Household">Health & Household</p>
+                    <p class="category-item" data-category="Home & Kitchen">Home & Kitchen</p>
+                    <p class="category-item" data-category="Industrial & Scientific">Industrial & Scientific</p>
+                    <p class="category-item" data-category="Kindle Store">Kindle Store</p>
+                    <p class="category-item" data-category="Luggage">Luggage</p>
+                    <p class="category-item" data-category="Men's Fashion">Men's Fashion</p>
+                    <p class="category-item" data-category="Movies & TV">Movies & TV</p>
+                    <p class="category-item" data-category="Pet Supplies">Pet Supplies</p>
+                    <p class="category-item" data-category="Music, CDs & Vinyl">Music, CDs & Vinyl</p>
+                    <p class="category-item" data-category="Prime Video">Prime Video</p>
+                    <p class="category-item" data-category="Software">Software</p>
+                    <p class="category-item" data-category="Sports & Outdoors">Sports & Outdoors</p>
+                    <p class="category-item" data-category="Tools & Home Improvement">Tools & Home Improvement</p>
+                    <p class="category-item" data-category="Toys & Games">Toys & Games</p>
+                    <p class="category-item" data-category="Video Games">Video Games</p>
+                    <p class="category-item" data-category="Women's Fashion">Women's Fashion</p>
+                </div>
             </div>
             <input type="text" class="nav-search-input" placeholder="Search Item">
-            <img src="assets/search_icon.png" class="nav-search-icon" alt="">
+            <a href=""><img src="assets/search_icon.png" class="nav-search-icon" alt=""></a>
         </div>
         <div class="nav-language">
             <img src="assets/us_flag.png" width="25px" alt="">
@@ -31,23 +62,39 @@
             <img src="assets/dropdown_icon.png" width="8px" alt="">
         </div>
         <div class="nav-text">
-            <p> Hello, Sign in</p>
-            <h1>Account & Lists <img src="assets/dropdown_icon.png" width="8px" alt=""></h1>
+            <a href="login.html"><p> Hello, Sign in</p></a>
+            <a href="login.html"><h1>Account & Lists <img src="assets/dropdown_icon.png" width="8px" alt=""></h1></a>
         </div>
         <div class="nav-text">
-            <p> Return</p>
+            <a href="">
+                <p> Return</p>
             <h1>& Orders </h1>
+            </a>
         </div>
         <a href="" class="nav-cart">
             <img src="assets/cart_icon.png" width="35px" alt="">
-            <h4>Cart</h4>
+            <a href="cart.html"><h4>Cart</h4></a>
         </a>
     </nav>
     <div class="nav-bottom">
-        <div>
+        <div id="allBtn">
             <img src="assets/menu_icon.png" width="25px" alt="">
             <p>All</p>
+            
         </div>
+       
+    <div class="navigation-drawer" id="navigationDrawer">
+        
+    <div class="close-btn" id="close-btn">&times; </div>
+        <ul>
+            <li><a href="#">Category 1</a></li>
+            <li><a href="#">Category 2</a></li>
+            <li><a href="#">Category 3</a></li>
+            <li><a href="#">Category 4</a></li>
+            <li><a href="#">Category 5</a></li>
+        </ul>
+        
+    </div>
         <a href=""></a><p>Today's Deals </p>
             <p>Customer Service</p>
             <p>Registry</p>

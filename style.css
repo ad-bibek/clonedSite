@@ -464,9 +464,6 @@ nav{
     margin: 10px 0;
 }
 
-/* Your existing styles */
-
-/* Applying Google Fonts */
 body {
     font-family: 'Roboto', sans-serif;
 }
@@ -482,14 +479,9 @@ body {
 }
 
 .product-grid {
-    display: -webkit-box;
-    display: -ms-flexbox;
     display: flex;
-    -ms-flex-wrap: wrap;
-        flex-wrap: wrap;
-    -webkit-box-pack: center;
-        -ms-flex-pack: center;
-            justify-content: center;
+    flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
 }
 
@@ -499,8 +491,7 @@ body {
     padding: 10px;
     width: 200px;
     text-align: left;
-    -webkit-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
     font-family: 'Open Sans', sans-serif;
 }
 
@@ -541,10 +532,7 @@ body {
     width: 200px;
     z-index: 1000;
     display: none;
-    -webkit-box-orient: vertical;
-    -webkit-box-direction: normal;
-        -ms-flex-direction: column;
-            flex-direction: column;
+    flex-direction: column;
 }
 
 .category-dropdown p {
@@ -560,3 +548,87 @@ body {
 .hidden {
     display: none;
 }
+
+.header-slider ul {
+    display: flex;
+    overflow: hidden;
+    width: 100%;
+}
+
+.header-slider img {
+    display: none;
+    width: 100%;
+}
+
+.header-slider .control_prev,
+.header-slider .control_next {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(0, 0, 0, 0.5);
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    text-decoration: none;
+    font-size: 18px;
+    z-index: 1;
+}
+
+.header-slider .control_prev {
+    left: 0;
+}
+
+.header-slider .control_next {
+    right: 0;
+}
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+}
+
+.nav-bottom {
+    background-color: #333;
+    color: white;
+    padding: 10px;
+    text-align: center;
+    cursor: pointer;
+}
+
+.navigation-drawer {
+    position: fixed;
+    top: 0;
+    left: -300px;
+    width: 250px;
+    height: 100%;
+    background-color: #f4f4f4;
+    transition: left 0.3s ease;
+    z-index: 2;
+}
+
+.navigation-drawer .close-btn {
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    font-size: 24px;
+    cursor: pointer;
+}
+
+.navigation-drawer ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.navigation-drawer ul li {
+    padding: 10px;
+}
+
+.navigation-drawer ul li a {
+    text-decoration: none;
+    color: #333;
+    font-weight: bold;
+}
+
+.navigation-drawer.show {
+    left: 0;
+}
+
