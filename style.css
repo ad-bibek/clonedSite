@@ -586,6 +586,54 @@ body {
     font-family: Arial, sans-serif;
 }
 
+.header, nav {
+    background-color: #232f3e;
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.header-logo img, .nav-cart img, .nav-language img {
+    vertical-align: middle;
+}
+
+.nav-language {
+    position: relative;
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+}
+
+.nav-language img, .nav-language p {
+    margin: 0 5px;
+}
+
+.language-dropdown {
+    display: none;
+    position: absolute;
+    top: 100%;
+    right: 0;
+    background-color: white;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    z-index: 1;
+    width: 120px;
+}
+
+.language-item {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.language-item:hover {
+    background-color: #f1f1f1;
+}
+
+.hidden {
+    display: none;
+}
 .nav-bottom {
     background-color: #333;
     color: white;

@@ -104,6 +104,21 @@ function setupCategoryDropdown() {
         }
     });
 }
+document.addEventListener('DOMContentLoaded', function() {
+    const navLanguage = document.querySelector('.nav-language');
+    const languageDropdown = document.querySelector('.language-dropdown');
+
+    navlanguage.addEventListener('click', function() {
+        languageDropdown.classList.toggle('hidden');
+    });
+
+    document.addEventListener('click', function(event) {
+        if (!navlanguage.contains(event.target)) {
+            languageDropdown.classList.add('hidden');
+        }
+    });
+});
+
 document.addEventListener('DOMContentLoaded', () => {
     const allBtn = document.getElementById('allBtn');
     const navigationDrawer = document.getElementById('navigationDrawer');
@@ -122,5 +137,5 @@ document.addEventListener('DOMContentLoaded', () => {
             navigationDrawer.classList.remove('show');
         }
     });
-});
+    });
 
