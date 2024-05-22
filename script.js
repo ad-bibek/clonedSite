@@ -1,6 +1,6 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupSlider();
-    fetchFakeShopAPI();
+    fetchDummyJSONAPI();
     setupCategoryDropdown();
     setupLanguageDropdown();
     setupNavigationDrawer();
@@ -32,16 +32,19 @@ function setupSlider() {
     });
 }
 
-function fetchFakeShopAPI(category = 'All') {
+function fetchDummyJSONAPI(category = 'All') {
     const loadingIndicator = document.getElementById('loading');
     loadingIndicator.style.display = 'block';
 
-    const url = category === 'All' ? 'https://fakestoreapi.com/products' : `https://fakestoreapi.com/products/category/${category.toLowerCase()}`;
+    let url = 'https://dummyjson.com/products';
+    if (category !== 'All') {
+        url = `https://dummyjson.com/products/category/${category}`;
+    }
 
     fetch(url)
         .then(response => response.json())
         .then(data => {
-            displayProducts(data);
+            displayProducts(data.products);
             loadingIndicator.style.display = 'none';
         })
         .catch(error => {
@@ -59,7 +62,7 @@ function displayProducts(products) {
         productElement.className = 'product';
 
         productElement.innerHTML = `
-            <img src="${product.image}" alt="${product.title}">
+            <img src="${product.thumbnail}" alt="${product.title}">
             <h2>${product.title}</h2>
             <p>${product.description}</p>
             <p class="price">$${product.price}</p>
@@ -74,7 +77,6 @@ function setupCategoryDropdown() {
     const categoryDropdown = document.getElementById('category-dropdown');
     const categoryLabel = navSearchCategory.querySelector('p');
 
-    
     fetch('https://dummyjson.com/products/categories')
         .then(res => res.json())
         .then(categories => {
@@ -89,7 +91,7 @@ function setupCategoryDropdown() {
                     const selectedCategory = e.target.getAttribute('data-category');
                     categoryLabel.textContent = selectedCategory;
                     categoryDropdown.classList.add('hidden');
-                    fetchFakeShopAPI(selectedCategory);
+                    fetchDummyJSONAPI(selectedCategory);
                 });
             });
         })
@@ -120,7 +122,6 @@ function setupLanguageDropdown() {
         }
     });
 }
-
 
 function setupNavigationDrawer() {
     const allBtn = document.getElementById('allBtn');
