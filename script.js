@@ -70,25 +70,25 @@ function displayProducts(products) {
 }
 
 function setupCategoryDropdown() {
-    const categoryLabel = document.querySelector('.nav-search-category p');
+    const navSearchCategory = document.querySelector('.nav-search-category');
     const categoryDropdown = document.getElementById('category-dropdown');
     const categoryItems = document.querySelectorAll('.category-item');
 
-    document.getElementById('category-menu').addEventListener('click', () => {
+    navSearchCategory.addEventListener('click', () => {
         categoryDropdown.classList.toggle('hidden');
     });
 
     categoryItems.forEach(item => {
         item.addEventListener('click', (e) => {
             const selectedCategory = e.target.getAttribute('data-category');
-            categoryLabel.textContent = selectedCategory;
+            navSearchCategory.querySelector('p').textContent = selectedCategory;
             categoryDropdown.classList.add('hidden');
             fetchFakeShopAPI(selectedCategory);
         });
     });
 
     document.addEventListener('click', (e) => {
-        if (!document.getElementById('category-menu').contains(e.target)) {
+        if (!navSearchCategory.contains(e.target)) {
             categoryDropdown.classList.add('hidden');
         }
     });
@@ -112,7 +112,7 @@ function setupLanguageDropdown() {
 function setupNavigationDrawer() {
     const allBtn = document.getElementById('allBtn');
     const navigationDrawer = document.getElementById('navigationDrawer');
-    const closeBtn = document.getElementById('closeBtn');
+    const closeBtn = document.getElementById('close-btn');
 
     allBtn.addEventListener('click', () => {
         navigationDrawer.classList.add('show');
