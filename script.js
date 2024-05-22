@@ -1,9 +1,9 @@
 document.addEventListener('DOMContentLoaded', () => {
     setupSlider();
-    fetchDummyJSONAPI();
     setupCategoryDropdown();
     setupLanguageDropdown();
     setupNavigationDrawer();
+    setupSearch();
 });
 
 function setupSlider() {
@@ -32,23 +32,38 @@ function setupSlider() {
     });
 }
 
-function fetchDummyJSONAPI(category = 'All') {
+function setupSearch() {
+    const searchInput = document.querySelector('.nav-search-input');
+    const searchButton = document.querySelector('.nav-search a');
+
+    searchButton.addEventListener('click', (event) => {
+        event.preventDefault();
+        performSearch(searchInput.value);
+    });
+
+    searchInput.addEventListener('keydown', (event) => {
+        if (event.key === 'Enter') {
+            event.preventDefault();
+            performSearch(searchInput.value);
+        }
+    });
+}
+
+function performSearch(query) {
     const loadingIndicator = document.getElementById('loading');
+    const productsContainer = document.getElementById('products');
+
     loadingIndicator.style.display = 'block';
+    productsContainer.innerHTML = '';
 
-    let url = 'https://dummyjson.com/products';
-    if (category !== 'All') {
-        url = `https://dummyjson.com/products/category/${category}`;
-    }
-
-    fetch(url)
+    fetch(`https://dummyjson.com/products/search?q=${query}`)
         .then(response => response.json())
         .then(data => {
             displayProducts(data.products);
             loadingIndicator.style.display = 'none';
         })
         .catch(error => {
-            console.error('Error fetching data:', error);
+            console.error('Error fetching search results:', error);
             loadingIndicator.textContent = 'Error loading products';
         });
 }
@@ -106,6 +121,27 @@ function setupCategoryDropdown() {
             categoryDropdown.classList.add('hidden');
         }
     });
+}
+
+function fetchDummyJSONAPI(category = 'All') {
+    const loadingIndicator = document.getElementById('loading');
+    loadingIndicator.style.display = 'block';
+
+    let url = 'https://dummyjson.com/products';
+    if (category !== 'All') {
+        url = `https://dummyjson.com/products/category/${category}`;
+    }
+
+    fetch(url)
+        .then(response => response.json())
+        .then(data => {
+            displayProducts(data.products);
+            loadingIndicator.style.display = 'none';
+        })
+        .catch(error => {
+            console.error('Error fetching data:', error);
+            loadingIndicator.textContent = 'Error loading products';
+        });
 }
 
 function setupLanguageDropdown() {
