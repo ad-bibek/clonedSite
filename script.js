@@ -72,19 +72,31 @@ function displayProducts(products) {
 function setupCategoryDropdown() {
     const navSearchCategory = document.querySelector('.nav-search-category');
     const categoryDropdown = document.getElementById('category-dropdown');
-    const categoryItems = document.querySelectorAll('.category-item');
+    const categoryLabel = navSearchCategory.querySelector('p');
+
+    
+    fetch('https://dummyjson.com/products/categories')
+        .then(res => res.json())
+        .then(categories => {
+            categories.forEach(category => {
+                const categoryItem = document.createElement('p');
+                categoryItem.className = 'category-item';
+                categoryItem.setAttribute('data-category', category);
+                categoryItem.textContent = category.charAt(0).toUpperCase() + category.slice(1);
+                categoryDropdown.appendChild(categoryItem);
+
+                categoryItem.addEventListener('click', (e) => {
+                    const selectedCategory = e.target.getAttribute('data-category');
+                    categoryLabel.textContent = selectedCategory;
+                    categoryDropdown.classList.add('hidden');
+                    fetchFakeShopAPI(selectedCategory);
+                });
+            });
+        })
+        .catch(error => console.error('Error fetching categories:', error));
 
     navSearchCategory.addEventListener('click', () => {
         categoryDropdown.classList.toggle('hidden');
-    });
-
-    categoryItems.forEach(item => {
-        item.addEventListener('click', (e) => {
-            const selectedCategory = e.target.getAttribute('data-category');
-            navSearchCategory.querySelector('p').textContent = selectedCategory;
-            categoryDropdown.classList.add('hidden');
-            fetchFakeShopAPI(selectedCategory);
-        });
     });
 
     document.addEventListener('click', (e) => {
@@ -108,6 +120,7 @@ function setupLanguageDropdown() {
         }
     });
 }
+
 
 function setupNavigationDrawer() {
     const allBtn = document.getElementById('allBtn');
