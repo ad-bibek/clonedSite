@@ -82,7 +82,6 @@ function displayProducts(products) {
             <p>${product.description}</p>
             <p class="price">$${product.price}</p>
         `;
-
         productsContainer.appendChild(productElement);
     });
 }

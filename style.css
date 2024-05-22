@@ -457,3 +457,27 @@ nav {
     display: -ms-flexbox;
     display: flex;
 }
+.product {
+    border: 1px solid #ccc;
+    padding: 10px;
+    margin: 10px;
+    text-align: center;
+}
+
+.product img {
+    width: 100px;
+    height: auto;
+}
+
+.product h2 {
+    font-size: 18px;
+}
+
+.product p {
+    font-size: 14px;
+}
+
+.product .price {
+    color: green;
+    font-weight: bold;
+}
