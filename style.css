@@ -269,3 +269,103 @@ nav {
 .navigation-drawer.show {
     left: 0;
 }
+/* Existing CSS */
+
+.nav {
+    display: flex;
+    align-items: center;
+    background: #131921;
+    color: white;
+    padding: 10px;
+    position: relative;
+}
+
+.nav-item {
+    position: relative;
+    cursor: pointer;
+}
+
+.nav-item p {
+    margin: 0;
+}
+
+.nav-language,
+.nav-account {
+    position: relative;
+}
+
+.dropdown,
+.language-dropdown,
+.account-dropdown {
+    position: absolute;
+    top: 100%;
+    left: 0;
+    background: white;
+    color: black;
+    border: 1px solid #ccc;
+    width: 400px;
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+    display: none;
+    flex-direction: column;
+    padding: 20px;
+    z-index: 2;
+}
+
+.account-dropdown .sign-in {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.account-dropdown .sign-in button {
+    background-color: #ffd64f;
+    border: none;
+    padding: 10px 20px;
+    cursor: pointer;
+    font-size: 16px;
+    border-radius: 5px;
+}
+
+.account-dropdown .sign-in p {
+    margin: 10px 0 0;
+}
+
+.account-dropdown .sign-in a {
+    color: #0073bb;
+}
+
+.dropdown-content {
+    display: flex;
+}
+
+.dropdown-column {
+    flex: 1;
+    padding: 10px;
+}
+
+.dropdown-column h3 {
+    margin: 0 0 10px;
+}
+
+.dropdown-column ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.dropdown-column ul li {
+    margin: 5px 0;
+}
+
+.dropdown-column ul li a {
+    color: #0073bb;
+    text-decoration: none;
+}
+
+.hidden {
+    display: none;
+}
+
+.nav-language:hover .language-dropdown,
+.nav-account:hover .account-dropdown {
+    display: flex;
+}
